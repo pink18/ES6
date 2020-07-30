@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(a);
+        // console.log(b);// 坑1 暂时性死区
+
+        var a = 123;
+        let b = 123;
+        var a = 456;
+        // let b=456; // 坑2 在同一个作用域 不能命名相同的变量
+
+        if (true) {
+            let str = '代码块'
+            console.log(str);
+        }
+        // console.log(str);
+
+        {
+            let b = 'ddd';
+            console.log(b); 
+            {
+                // let b = 'eee';
+                console.log(b);
+            }
+        }
+    </script>
+</body>
+
+</html>

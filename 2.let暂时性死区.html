@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 暂时性死区
+        tep = 'bbb';
+        // 在let声明tep变量之前不能使用tep 该区域为暂时性死区
+        let tep = 'aaa';
+
+        console.log(tep);// Cannot access 'tep' before initialization
+        
+        var tmp=123;
+        if(true){
+            tmp=456;// 此时访问到的是块级作用域下的tmp 出现暂时下死区
+            // console.log(tmp);
+            let tmp;
+        }
+    </script>
+</body>
+
+</html>

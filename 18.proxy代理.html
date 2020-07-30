@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // proxy 代理 做对象属性的数据劫持
+
+        var fangdong = {
+            fz:'房子',
+            bs:'别墅',
+            list:[1,2,4]
+        }
+
+        var proxy = new Proxy(fangdong, {
+            get: function (target, propKey,receiver) {
+                console.log('触发get');
+                console.log(target);// 被代理对象
+                console.log(propKey);// 代理的属性
+                // console.log(receiver);// 代理对象 proxy
+                return target[propKey]
+            },
+            set: function (target,propKey,value,receiver) {
+                console.log('触发set');
+                console.log(target);
+                console.log(value);
+                target[propKey]=value;
+                console.log(target);
+                // console.log(receiver);
+            }
+        });
+
+        console.log(proxy);
+        var kehu = Object.create(proxy);
+        // console.log(kehu);
+        kehu.fz
+        proxy.fz='123'
+        // console.log(proxy.list);
+        proxy.list=new Proxy(proxy.list,{
+            get(target,index,reveicer){
+                console.log(target);
+                console.log(index);
+                console.log(reveicer);
+                return target[index]
+            },
+            set(target,index,value,reveicer){
+                console.log(value);
+                target[index]=value;
+            }
+        })
+        
+        proxy.list[0]='a'
+        console.log(proxy.list);
+    </script>
+</body>
+
+</html>

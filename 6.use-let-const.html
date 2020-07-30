@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>点击变色</h1>
+    <h1>点击变色</h1>
+    <h1>点击变色</h1>
+    <h1>点击变色</h1>
+    <h1>点击变色</h1>
+    <script>
+        var h1 = document.querySelectorAll('h1');
+        for (let i = 0; i < h1.length; i++) {
+            h1[i].onclick = function () {
+                h1[i].style.color = 'red';
+            }
+        }
+
+        // 如何解决变量污染？ 闭包 let
+
+        // 说一下 let const 理解？
+        // let const 都是块级作用域 没有变量提升 形成暂时性死区 在同一作用域下不能重复声明相同变量
+        // let 声明为变量 可以重新赋值
+        // const 声明为常量
+
+    </script>
+</body>
+
+</html>

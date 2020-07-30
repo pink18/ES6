@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let fun = (a, b) => {
+            // 箭头函数没有this 使用上一层作用域中this
+            console.log(this);
+        }
+        var obj = {
+            fun,
+            bar: function () {
+                setTimeout(function () {
+                    console.log(this);
+                }, 16.7);
+                setTimeout(() => {
+                    console.log(this);
+                }, 16.7)
+            }
+        }
+        obj.fun();
+        obj.bar();
+
+        // // 这里的this永远指向window
+        // setTimeout(function () {
+        //     console.log(this);
+        // }, 16.7)
+
+        // // 这里的this不一定指向window
+        // setTimeout(() => {
+        //     console.log(this);
+        // }, 16.7)
+
+        // 大部分异步的function 函数中默认的this指向window
+        // 解决方式 bind apply call
+        // 方式二 箭头函数
+
+        // 箭头函数没有arguments
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var p1 = new Promise((resolve) => {
+            console.log('p1');
+            setTimeout(function () {
+                resolve(1)
+            }, 200)
+        })
+        var p2 = new Promise((resolve) => {
+            console.log('p2');
+            setTimeout(function () {
+                resolve(2)
+            }, 1000)
+        })
+        var p3 = new Promise((resolve) => {
+            console.log('p3');
+            setTimeout(function () {
+                resolve(3)
+            }, 200)
+        })
+        var test = [p1, p2, p3];
+        Promise.all(test).then(res => {
+            console.log(res);
+            console.log('多个异步任务完成');
+            alert('多个异步任务完成');
+        })
+
+        // 业务
+        // 发送多个非关联请求 需要等待所有请求都成功后 再执行下一个任务 promise.all()
+
+    </script>
+</body>
+
+</html>

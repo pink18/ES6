@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 设置默认值
+        // 之前给形参设置默认值
+        function fun(x, y) {
+            y = y || '默认值';
+            console.log(y);
+        }
+        fun()
+
+        // es6
+        function fun1(x, y = '默认值') {
+            console.log(y);
+        }
+        fun1(1,2)
+
+        function fun2({x='x',y='默认值'}){
+            console.log(x,y);
+        }
+        fun2({x:1})
+
+        // 默认值应用
+        function throwIfMissing(){
+            throw new Error('Missing parameter');
+        }
+        function a(mustBeProvided=throwIfMissing()){
+            return mustBeProvided;
+        }
+        a()
+        // console.log(a('111'));
+    </script>
+</body>
+
+</html>
